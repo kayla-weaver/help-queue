@@ -11,7 +11,6 @@ class TicketControl extends React.Component {
   super(props);
   console.log(props);
   this.state = {
-    // formVisibleOnPage: false,
     selectedTicket: null,
     editing: false
   };
@@ -51,7 +50,10 @@ class TicketControl extends React.Component {
       issue: issue,
     }
     dispatch(action);
-    this.setState({formVisibleOnPage: false});
+  const action2 = {
+    type: 'TOGGLE_FORM'
+  }
+  dispatch(action2);
   }
 
 
@@ -65,30 +67,19 @@ class TicketControl extends React.Component {
     this.setState({selectedTicket: null});
   }
 
-  // handleClick = () => {
-  //   const { dispatch } = this.props;
-  //   if (this.state.selectedTicket != null) {
-  //     this.setState({
-  //       selectedTicket: null,
-  //       editing: false
-  //     });
-  //   } else {
-  //     // const action = a.toggleForm();
-  //     // dispatch(action);
-  //   }
-  // }
 
   handleClick = () => {
-    if (this.props.selectedTicket != null) {
+    if (this.state.selectedTicket != null) {
       this.setState({
-        formVisibleOnPage: false,
         selectedTicket: null,
         editing: false
       });
     } else {
-      this.setState(prevState => ({
-        formVisibleOnPage: !prevState.formVisibleOnPage,
-      }));
+      const { dispatch } = this.props;
+      const action = {
+        type: 'TOGGLE_FORM'
+      }
+      dispatch(action);
     }
   }
 
@@ -126,17 +117,11 @@ class TicketControl extends React.Component {
       </React.Fragment>
     );
   }
-  //   return(
-  //     <React.Fragment>
-  //       {currentlyVisibleState}
-  //       <button onClick={this.handleClick}>{buttonText}</button> 
-  //     </React.Fragment>
-  //   );
-  // }
 }
 
 TicketControl.propTypes = {
-  mainTicketList: PropTypes.object
+  mainTicketList: PropTypes.object,
+  formVisibleOnPage: PropTypes.bool
 };
 
 
@@ -146,11 +131,6 @@ const mapStateToProps = state => {
     formVisibleOnPage: state.formVisibleOnPage
   }
 }
-// const mapStateToProps = state => {
-//   return {
-//     mainTicketList: state
-//   }
-// }
 
 TicketControl = connect(mapStateToProps)(TicketControl);
 
