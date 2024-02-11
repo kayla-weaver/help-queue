@@ -20,3 +20,29 @@ export const addTicket = (ticket) => {
     id: id
   }
 }
+
+export const updateTicket = (ticket) => {
+  const { names, location, issue, id } = ticket;
+  return {
+    type: c.UPDATE_TICKET,
+    names: names,
+    location: location,
+    issue: issue,
+    id: id
+  }
+}
+
+// export const updateTicketIssue = (values) => {
+//   const {issue, id} = values;
+//   return {
+//     type: c.UPDATE_TICKET_ISSUE,
+//     issue: issue,
+//     id: id
+//   }
+// }
+
+// export const updateTime = (id, formattedWaitTime) => ({
+//   type: c.UPDATE_TIME,
+//   id: id,
+//   formattedWaitTime: formattedWaitTime
+// })
