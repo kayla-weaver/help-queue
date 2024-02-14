@@ -1,6 +1,6 @@
 import * as c from './../actions/ActionTypes';
 
-export default (state = {}, action) => {
+const ticketReducer = (state = {}, action) => {
   const { names, location, issue, id, formattedWaitTime, timeOpen } = action;
   switch (action.type) {
   case c.ADD_TICKET:
@@ -24,16 +24,16 @@ export default (state = {}, action) => {
     // };
   case c.UPDATE_TICKET_ISSUE:
     // const newStateUpdatestate[id], {
-      [id]: {
-        names: names,
-        location: location,
-        issue: issue,
-        id: id,
-        timeOpen: timeOpen,
-        formattedWaitTime: formattedWaitTime
-      }
-    } 
-    return = { ...state, [id]: { ...state[id], issue: issue } };
+    //   [id]: {
+    //     names: names,
+    //     location: location,
+    //     issue: issue,
+    //     id: id,
+    //     timeOpen: timeOpen,
+    //     formattedWaitTime: formattedWaitTime
+    //   }
+    // } 
+    // return = { ...state, [id]: { ...state[id], issue: issue } };
     const newStateUpdate = Object.assign({}, state, {
       [id]: Object.assign({}, state[id], {
         issue: issue,
@@ -55,12 +55,7 @@ export default (state = {}, action) => {
   }
 };
 
-
-
-
-
-
-
+export default ticketReducer;
 
 // import * as c from './../actions/ActionTypes';
 

@@ -92,17 +92,25 @@ describe('ticketListReducer', () => {
   test('Should successfully update only issue property of existing ticket data in mainTicketList', () => {
     const { names, location, issue, id } = ticketData;
 
-    const newState = ticketListReducer({}, action);
-
     action = {
-      type: c.UPDATE_TICKET,
-      names: names,
-      location: location,
+      type: c.ADD_TICKET,
+      names,
+      location, 
+      issue,
+      id
+    }
+
+    const newState = ticketListReducer({}, action);
+    
+    action = {
+      type: c.UPDATE_TICKET_ISSUE,
       issue: "actually meant to ask about mapStateToProps()",
       id: 1
     };
 
     const newState2 = ticketListReducer(newState, action);
+
+    // const newState2 = ticketListReducer(newState, action);
 
     expect(newState2).toEqual({
       [id] : {
@@ -131,7 +139,7 @@ describe('ticketListReducer', () => {
   test('Should add a formatted wait time to ticket entry', () => {
     const { names, location, issue, timeOpen, id } = ticketData;
     action = {
-      type: c.UPDATE_TICKET,
+      type: c.UPDATE_TIME,
       names: names, 
       location: location,
       issue: issue,

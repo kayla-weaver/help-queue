@@ -21,28 +21,28 @@ export const addTicket = (ticket) => {
   }
 }
 
-export const updateTicket = (ticket) => {
-  const { names, location, issue, id } = ticket;
-  return {
-    type: c.UPDATE_TICKET,
-    names: names,
-    location: location,
-    issue: issue,
-    id: id
-  }
-}
-
-// export const updateTicketIssue = (values) => {
-//   const {issue, id} = values;
+// export const updateTicket = (ticket) => {
+//   const { names, location, issue, id } = ticket;
 //   return {
-//     type: c.UPDATE_TICKET_ISSUE,
+//     type: c.UPDATE_TICKET,
+//     names: names,
+//     location: location,
 //     issue: issue,
 //     id: id
 //   }
 // }
 
-// export const updateTime = (id, formattedWaitTime) => ({
-//   type: c.UPDATE_TIME,
-//   id: id,
-//   formattedWaitTime: formattedWaitTime
-// })
+export const updateTicketIssue = (values) => {
+  const {issue, id} = values;
+  return {
+    type: c.UPDATE_TICKET_ISSUE,
+    issue: issue,
+    id: id
+  }
+}
+
+export const updateTime = (id, formattedWaitTime) => ({
+  type: c.UPDATE_TIME,
+  id: id,
+  formattedWaitTime: formattedWaitTime
+})
